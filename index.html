@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <script type="module">
+        import { arr, triHoriz } from "./mod.ts"
+        document.body.innerHTML = `
+            helo
+            ${arr(10).map(i =>
+                `<div style="width: 100px">${triHoriz.pick(""+i)}</div>`).join("")}
+        `
+    </script>
+</body>
+</html>
