@@ -14,7 +14,15 @@ const palette =
        adjs.every(([i, j]) => {
             return Math.abs(calcAPCA(l[i], l[j]) as number) > 40
         })
-    )
+    ).map(l => {
+        l.forEach((c0, i) => l.forEach((c1, j) => {
+            if (i == j) return
+            if (Math.abs(calcAPCA(c0, c1)) < 5) {
+                l[j] = c0
+            }
+        }))
+        return l
+    })
 
 export const horiz =
 (n: number) =>
@@ -35,7 +43,17 @@ ${
 }
 </svg>`)
 
+export const ortho =
+palette(4, [[0, 1], [0, 2], [3, 1], [3, 2]]).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
+${
+    l.map((c, i) =>
+        `<rect x="${5/2*~~(i/2)}" y="${3/2*(i%2)}" width="${5/2}" height="${3/2}" fill="${c}"/>`)
+        .join("\n")
+}
+</svg>`)
+
 export const flag = Dist.u([
-    Dist.range(2, 6).flatMap(horiz),
+    Dist.range(2, 5).flatMap(horiz),
     Dist.range(2, 6).flatMap(verti),
+    ortho,
 ]).flat()
