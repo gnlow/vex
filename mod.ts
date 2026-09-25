@@ -3,8 +3,8 @@ import { hex } from "https://gnlow.dev/oklch@0.1.3"
 import { Dist, arr } from "https://gnlow.dev/disty@0.5.0-beta.4"
 export { arr }
 
-const l = Dist.f(x => 0.3+0.7*x)
-const c = Dist.f(x => 0.2*x)
+const l = Dist.f(x => 0.2+0.8*x)
+const c = Dist.f(x => 0.3*x)
 const h = Dist.range(0, 360)
 const oklch = Dist.cross([l, c, h]).map(x => hex(...x))
 
