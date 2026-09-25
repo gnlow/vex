@@ -8,9 +8,14 @@
     <script type="module">
         import { arr, flag } from "./mod.ts"
         document.body.innerHTML = `
-            helo
-            ${arr(10).map(i =>
+            Vex
+            <div style="
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            ">
+            ${arr(30).map(i =>
                 `<div style="width: 100px">${flag.pick(""+i)}</div>`).join("")}
+            </div>
         `
     </script>
 </body>

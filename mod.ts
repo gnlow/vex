@@ -51,9 +51,17 @@ ${
         .join("\n")
 }
 </svg>`)
+export const saltire =
+palette(4, [[0, 1], [1, 2], [2, 3], [3, 0]]).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
+    <path fill="${l[0]}" d="M 0 0 L ${5/2} ${3/2} L 0 3 Z"/>
+    <path fill="${l[1]}" d="M 5 0 L ${5/2} ${3/2} L 0 0 Z"/>
+    <path fill="${l[2]}" d="M 5 3 L ${5/2} ${3/2} L 5 0 Z"/>
+    <path fill="${l[3]}" d="M 0 3 L ${5/2} ${3/2} L 5 3 Z"/>
+</svg>`)
 
 export const flag = Dist.u([
     Dist.range(2, 5).flatMap(horiz),
     Dist.range(2, 6).flatMap(verti),
     ortho,
+    saltire,
 ]).flat()
