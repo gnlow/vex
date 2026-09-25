@@ -24,3 +24,15 @@ ${
         .join("\n")
 }
 </svg>`)
+export const triVerti = palette(3).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 15 9">
+${
+    l.map((c, i) =>
+        `<rect x="${i*5}" y="0" width="5" height="9" fill="${c}"/>`)
+        .join("\n")
+}
+</svg>`)
+
+export const flag = Dist.u([
+    triHoriz,
+    triVerti,
+]).flat()

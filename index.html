@@ -6,11 +6,11 @@
 </head>
 <body>
     <script type="module">
-        import { arr, triHoriz } from "./mod.ts"
+        import { arr, flag } from "./mod.ts"
         document.body.innerHTML = `
             helo
             ${arr(10).map(i =>
-                `<div style="width: 100px">${triHoriz.pick(""+i)}</div>`).join("")}
+                `<div style="width: 100px">${flag.pick(""+i)}</div>`).join("")}
         `
     </script>
 </body>
