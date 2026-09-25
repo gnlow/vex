@@ -16,22 +16,26 @@ const palette =
         })
     )
 
-export const triHoriz = palette(3, [[0, 1], [1, 2]]).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
+export const horiz =
+(n: number) =>
+palette(n, arr(n-1).map(i => [i, i+1])).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
 ${
     l.map((c, i) =>
-        `<rect x="0" y="${i}" width="5" height="1" fill="${c}"/>`)
+        `<rect x="0" y="${3/n*i}" width="5" height="${3/n}" fill="${c}"/>`)
         .join("\n")
 }
 </svg>`)
-export const triVerti = palette(3, [[0, 1], [1, 2]]).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 15 9">
+export const verti =
+(n: number) =>
+palette(n, arr(n-1).map(i => [i, i+1])).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
 ${
     l.map((c, i) =>
-        `<rect x="${i*5}" y="0" width="5" height="9" fill="${c}"/>`)
+        `<rect x="${5/n*i}" y="0" width="${5/n}" height="3" fill="${c}"/>`)
         .join("\n")
 }
 </svg>`)
 
 export const flag = Dist.u([
-    triHoriz,
-    triVerti,
+    Dist.range(2, 6).flatMap(horiz),
+    Dist.range(2, 6).flatMap(verti),
 ]).flat()
