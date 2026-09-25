@@ -42,6 +42,44 @@ ${
         .join("\n")
 }
 </svg>`)
+export const dexter =
+(n: number) =>
+palette(n, arr(n-1).map(i => [i, i+1])).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
+${
+    l.map((c, i) =>
+        `<rect
+            transform="
+                translate(${5/2}, ${3/2})
+                rotate(${Math.atan(3/5)*180/Math.PI})
+                scale(
+                    ${(5*Math.cos(Math.atan(3/5))+3*Math.sin(Math.atan(3/5)))/5},
+                    ${(5*Math.sin(Math.atan(3/5))+3*Math.cos(Math.atan(3/5)))/3}
+                )
+                translate(${-5/2}, ${-3/2})
+            "
+            x="0" y="${3/n*i}" width="5" height="${3/n}" fill="${c}"/>`)
+        .join("\n")
+}
+</svg>`)
+export const sinister =
+(n: number) =>
+palette(n, arr(n-1).map(i => [i, i+1])).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
+${
+    l.map((c, i) =>
+        `<rect
+            transform="
+                translate(${5/2}, ${3/2})
+                rotate(${-Math.atan(3/5)*180/Math.PI})
+                scale(
+                    ${(5*Math.cos(Math.atan(3/5))+3*Math.sin(Math.atan(3/5)))/5},
+                    ${(5*Math.sin(Math.atan(3/5))+3*Math.cos(Math.atan(3/5)))/3}
+                )
+                translate(${-5/2}, ${-3/2})
+            "
+            x="0" y="${3/n*i}" width="5" height="${3/n}" fill="${c}"/>`)
+        .join("\n")
+}
+</svg>`)
 
 export const ortho =
 palette(4, [[0, 1], [0, 2], [3, 1], [3, 2]]).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
@@ -62,6 +100,8 @@ palette(4, [[0, 1], [1, 2], [2, 3], [3, 0]]).map(l => `<svg xmlns="http://w3.org
 export const flag = Dist.u([
     Dist.range(2, 5).flatMap(horiz),
     Dist.range(2, 6).flatMap(verti),
+    Dist.range(2, 5).flatMap(dexter),
+    Dist.range(2, 5).flatMap(sinister),
     ortho,
     saltire,
 ]).flat()
