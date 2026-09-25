@@ -1,7 +1,6 @@
 import { calcAPCA } from "https://esm.sh/apca-w3@0.1.9"
 import { hex } from "https://gnlow.dev/oklch@0.1.3"
 import { Dist, arr } from "https://gnlow.dev/disty@0.5.0-beta.4"
-export { arr }
 
 const l = Dist.f(x => 0.3+0.7*x)
 const c = Dist.f(x => 0.2*x)
@@ -17,10 +16,4 @@ const palette =
         }))
     )
 
-export const triHoriz = palette(3).map(l => `<svg xmlns="http://w3.org/2000/svg" viewbox="0 0 5 3">
-${
-    l.map((c, i) =>
-        `<rect x="0" y="${i}" width="5" height="1" fill="${c}"/>`)
-        .join("\n")
-}
-</svg>`)
+console.log(palette(3).pick("hi"))
